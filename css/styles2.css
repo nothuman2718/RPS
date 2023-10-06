@@ -1,0 +1,33 @@
+body{
+    background-color:black;
+    color: white;
+}
+.score-cards{
+        display: flex;
+        justify-content: space-between
+}
+main{
+    width: 60vw;
+    height: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    background-color: white;
+}
+/* player buttons */
+
+.player-buttons{
+    top:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.player-buttons div{
+    width: 80px;
+  height: 80px;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  background:black;
+  border-radius: 50%;
+}

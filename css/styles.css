@@ -93,7 +93,10 @@ footer a{
     -webkit-user-select: none;
     touch-action: manipulation;
   }
-  
+  .button-85 a  {
+    color:white;
+  text-decoration: none;
+  }
   .button-85:before {
     content: "";
     background: linear-gradient(

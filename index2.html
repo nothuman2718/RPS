@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles2.css" />
+  </head>
+  <body>
+    <header class="score-cards">
+      <span>
+        <h2 id="username"></h2>
+        <p id="player-score">PlayerScore</p>
+      </span>
+      <span class="no-of-rounds">
+        <h2 class="rounds">Round</h2>
+        <p id="rounds-no">RoundNo</p>
+      </span>
+      <span>
+        <h2 class="computer">Computer</h2>
+        <p id="computer-score">ComputerScore</p>
+      </span>
+    </header>
+    <main>
+      <div class="rps-images">
+        <img src="Images/LeftPaper.jpg" alt="Paper" class="player-image" />
+        <img src="Images/RightPaper.jpg" alt="" class="computer-image" />
+      </div>
+      <div class="buttons-container">
+        <div class="player-buttons">
+          <div>Rock</div>
+          <div>Paper</div>
+          <div>Scissor</div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    let username = window.prompt("Enter Username");
+    let playerScore = 0;
+    let computerScore = 0;
+    let rounds = 1;
+    let LeftPaper = "Images/LeftPaper.jpg";
+    let LeftRock = "Images/LeftRock.jpg";
+    let LeftScissor = "Images/LeftScissor.jpg";
+    let RightPaper = "Images/RightPaper.jpg";
+    let RightRock = "Images/RightRock.jpg";
+    let RightScissor = "Images/RightScissor.jpg";
+    let playerSelection = "";
+    let computerSelection = "";
+    let playerImage = document.querySelector(".player-image");
+    let computerImage = document.querySelector(".computer-image");
+    let setUserName = (document.getElementById("username").innerHTML =
+      username);
+
+    function randomSelection() {
+      let random = Math.floor(Math.random() * 3);
+      if (random == 0) {
+        computerSelection = "Rock";
+        computerImage.src = RightRock;
+      } else if (random == 1) {
+        computerSelection = "Paper";
+        computerImage.src = RightPaper;
+      } else {
+        computerSelection = "Scissor";
+        computerImage.src = RightScissor;
+      }
+      return computerSelection;
+    }
+
+    function userSelection() {
+      let playerButtons = document.querySelectorAll(".player-buttons div");
+      playerButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          if (rounds <= 10) {
+            if (button.textContent == "Rock") {
+              playerSelection = "Rock";
+              playerImage.src = LeftRock;
+            } else if (button.textContent == "Paper") {
+              playerSelection = "Paper";
+              playerImage.src = LeftPaper;
+            } else {
+              playerSelection = "Scissor";
+              playerImage.src = LeftScissor;
+            }
+
+            computerSelection = randomSelection();
+
+            switch (playerSelection) {
+              case "Rock":
+                if (computerSelection == "Rock") {
+                  console.log("Draw");
+                  playerScore++;
+                  computerScore++;
+                } else if (computerSelection == "Paper") {
+                  console.log("Computer Wins");
+                  computerScore++;
+                } else {
+                  console.log("Player Wins");
+                  playerScore++;
+                }
+                break;
+              case "Paper":
+                if (computerSelection == "Rock") {
+                  console.log("Player Wins");
+                  playerScore++;
+                } else if (computerSelection == "Paper") {
+                  console.log("Draw");
+                  playerScore++;
+                  computerScore++;
+                } else {
+                  console.log("Computer Wins");
+                  computerScore++;
+                }
+                break;
+              case "Scissor":
+                if (computerSelection == "Rock") {
+                  console.log("Computer Wins");
+                  computerScore++;
+                } else if (computerSelection == "Paper") {
+                  console.log("Player Wins");
+                  playerScore++;
+                } else {
+                  console.log("Draw");
+                  playerScore++;
+                  computerScore++;
+                }
+                break;
+            }
+
+            console.log("Player Score:", playerScore);
+            console.log("Computer Score:", computerScore);
+
+            rounds++;
+            document.getElementById("player-score").textContent = playerScore;
+            document.getElementById("computer-score").textContent =
+              computerScore;
+            document.getElementById("rounds-no").textContent = rounds - 1;
+
+            if (rounds > 10) {
+              if (playerScore > computerScore) {
+                window.alert("Player Wins");
+              } else if (playerScore < computerScore) {
+                window.alert("Computer Wins");
+              } else {
+                window.alert("Draw");
+              }
+            }
+          }
+        });
+      });
+    }
+
+    userSelection();
+  </script>
+</html>
