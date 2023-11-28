@@ -14,7 +14,7 @@ Download the zip file.
 Double-Click on the home.html or Open with Live Server
 
 # Enjoy the game.
-If you wish to learn anything have any doubts .
+If you wish to learn anything have any doubts related to project or wanna say some suggestios
 Mailme: nothuman2.718@gmail.com
 If you wish to colloberate or Open any issues . I am happy to make PR.
 
